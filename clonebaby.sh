@@ -44,24 +44,18 @@ brew tap caskroom/cask
 brew cleanup
 
 apps=(
-  alfred
   dropbox
   google-chrome
   firefox
   spotify
   java
-  sublime-text
-  atom
-  vlc
+  visual-studio-code
   transmission
   slack
   qlcolorcode
   quicklook-json
-  qlmarkdown
-  qlstephen
   intellij-idea
   iterm2
-  polymail
 )
 
 # Adding beta versions
@@ -73,10 +67,6 @@ brew cask install ${apps[@]}
 echo "Setting up zsh"
 curl -L http://install.ohmyz.sh | sh
 echo export PATH='/usr/local/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH' >> ~/.zshrc # <- TODO: Make idempotent
-
-#TODO: Dotfiles
-echo "Setting up VIM"
-cp -R dotfiles/.vim* ~
 
 echo "Settings.."
 defaults write com.apple.systemsound 'com.apple.sound.uiaudio.enabled' -int 0
@@ -93,9 +83,5 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write com.apple.dock wvous-tl-corner -int 2
 defaults write com.apple.dock autohide -bool true
 killall Dock
-
-curl -s "https://get.sdkman.io" | sh
-
-#TODO: Clean up zsh aliases
 
 exit 0
